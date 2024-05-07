@@ -11,14 +11,12 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 
 import { apiVersion, dataset, projectId, studioUrl } from '@/sanity/lib/api'
 import { locate } from '@/sanity/plugins/locate'
-import { pageStructure, singletonPlugin } from '@/sanity/plugins/settings'
-import page from '@/sanity/schemas/documents/page'
-import project from '@/sanity/schemas/documents/project'
-import duration from '@/sanity/schemas/objects/duration'
-import milestone from '@/sanity/schemas/objects/milestone'
-import timeline from '@/sanity/schemas/objects/timeline'
-import home from '@/sanity/schemas/singletons/home'
-import settings from '@/sanity/schemas/singletons/settings'
+import { pageStructure } from '@/sanity/plugins/settings'
+import course from '@/sanity/schemas/documents/course'
+import chapter from '@/sanity/schemas/objects/chapter'
+import faq from '@/sanity/schemas/objects/faq'
+import quiz, { choice, mcq } from '@/sanity/schemas/objects/quiz'
+import video from '@/sanity/schemas/objects/video'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
@@ -31,22 +29,11 @@ export default defineConfig({
   title,
   schema: {
     // If you want more content types, you can add them to this array
-    types: [
-      // Singletons
-      home,
-      settings,
-      // Documents
-      duration,
-      page,
-      project,
-      // Objects
-      milestone,
-      timeline,
-    ],
+    types: [course, chapter, faq, quiz, mcq, choice, video],
   },
   plugins: [
     structureTool({
-      structure: pageStructure([home, settings]),
+      structure: pageStructure([course]),
     }),
     presentationTool({
       locate,
@@ -57,7 +44,7 @@ export default defineConfig({
       },
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
-    singletonPlugin([home.name, settings.name]),
+    // singletonPlugin([home.name, settings.name]),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
     // Vision lets you query your content with GROQ in the studio
