@@ -50,7 +50,6 @@
     "prettier": "3.2.5",
     "prettier-plugin-packagejson": "2.5.0",
     "prettier-plugin-tailwindcss": "0.5.14",
-    "supabase": "^1.165.0",
     "tailwindcss": "3.4.3",
     "typescript": "5.4.5"
   }
