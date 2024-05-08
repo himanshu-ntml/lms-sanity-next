@@ -1,6 +1,5 @@
 import { relations } from 'drizzle-orm'
 import {
-  integer,
   pgEnum,
   pgSchema,
   pgTable,
@@ -22,10 +21,10 @@ export const profile = pgTable('profile', {
   id: uuid('id')
     .references(() => users.id)
     .notNull()
-    .unique(),
+    .primaryKey(),
   fullName: text('full_name'),
   email: varchar('email', { length: 100 }).unique(),
-  sarmaayaId: integer('sarmaaya_id').unique(),
+  sarmaayaId: varchar('sarmaaya_id').unique(),
   role: roleEnum('role').default('user')
 })
 
