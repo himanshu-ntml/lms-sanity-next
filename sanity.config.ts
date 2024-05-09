@@ -32,9 +32,7 @@ export default defineConfig({
     types: [course, chapter, faq, quiz, mcq, choice, video],
   },
   plugins: [
-    structureTool({
-      structure: pageStructure([course]),
-    }),
+    structureTool(),
     presentationTool({
       locate,
       previewUrl: {
