@@ -10,7 +10,7 @@ export default defineType({
 export const mcq = defineType({
   name: 'mcq',
   title: 'MCQ',
-  type: 'object',
+  type: 'document',
   fields: [
     defineField({
       name: 'question',

@@ -12,11 +12,11 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { apiVersion, dataset, projectId, studioUrl } from '@/sanity/lib/api'
 import { locate } from '@/sanity/plugins/locate'
 import { pageStructure } from '@/sanity/plugins/settings'
+import chapter from '@/sanity/schemas/documents/chapter'
 import course from '@/sanity/schemas/documents/course'
-import chapter from '@/sanity/schemas/objects/chapter'
-import faq from '@/sanity/schemas/objects/faq'
+import faq from '@/sanity/schemas/documents/faq'
+import video from '@/sanity/schemas/documents/video'
 import quiz, { choice, mcq } from '@/sanity/schemas/objects/quiz'
-import video from '@/sanity/schemas/objects/video'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||

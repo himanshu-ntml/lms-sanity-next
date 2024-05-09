@@ -1,9 +1,11 @@
+import { FolderIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'chapter',
   title: 'Chapter',
-  type: 'object',
+  type: 'document',
+  icon: FolderIcon,
   fields: [
     defineField({
       name: 'title',
