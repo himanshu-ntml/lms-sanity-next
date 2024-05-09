@@ -1,10 +1,13 @@
 import { relations } from 'drizzle-orm'
-import { pgTable, serial, text, varchar } from 'drizzle-orm/pg-core'
+import { pgTable, serial, text, uuid, varchar } from 'drizzle-orm/pg-core'
 
 import { profile } from './profile'
 
+export type NewCourse = typeof course.$inferInsert;
+export type Course = typeof course.$inferSelect;
+
 export const course = pgTable('course', {
-  id: serial('id').primaryKey(),
+  id: uuid('id').primaryKey(),
   title: text('title'),
   slug: varchar('slug', { length: 100 }).unique(),
 })

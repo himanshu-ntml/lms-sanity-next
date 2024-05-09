@@ -15,6 +15,13 @@
       "when": 1715253785254,
       "tag": "0001_panoramic_mentor",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1715259286818,
+      "tag": "0002_rare_justice",
+      "breakpoints": true
     }
   ]
 }

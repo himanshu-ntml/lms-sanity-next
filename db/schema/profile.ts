@@ -10,6 +10,9 @@ import {
 
 import { course } from './course'
 
+export type NewProfile = typeof profile.$inferInsert;
+export type Profile = typeof profile.$inferSelect;
+
 const authSchema = pgSchema('auth')
 const users = authSchema.table('users', {
   id: uuid('id').primaryKey(),
