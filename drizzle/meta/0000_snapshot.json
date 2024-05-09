@@ -1,5 +1,5 @@
 {
-  "id": "b2954403-5aa2-4c5b-a1ce-378a431137d8",
+  "id": "c6095162-d2a6-4415-ab68-d8f511d7d8dd",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -47,7 +47,7 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": false,
+          "primaryKey": true,
           "notNull": true
         },
         "full_name": {
@@ -64,9 +64,16 @@
         },
         "sarmaaya_id": {
           "name": "sarmaaya_id",
-          "type": "integer",
+          "type": "varchar",
           "primaryKey": false,
           "notNull": false
+        },
+        "role": {
+          "name": "role",
+          "type": "role",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'user'"
         }
       },
       "indexes": {},
@@ -88,13 +95,6 @@
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "profile_id_unique": {
-          "name": "profile_id_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "id"
-          ]
-        },
         "profile_email_unique": {
           "name": "profile_email_unique",
           "nullsNotDistinct": false,
@@ -115,6 +115,12 @@
       "name": "profile_course",
       "schema": "",
       "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
         "profile_id": {
           "name": "profile_id",
           "type": "uuid",
@@ -123,7 +129,7 @@
         },
         "course_id": {
           "name": "course_id",
-          "type": "integer",
+          "type": "serial",
           "primaryKey": false,
           "notNull": true
         },
@@ -164,19 +170,19 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {
-        "profile_course_course_id_profile_id_pk": {
-          "name": "profile_course_course_id_profile_id_pk",
-          "columns": [
-            "course_id",
-            "profile_id"
-          ]
-        }
-      },
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     }
   },
-  "enums": {},
+  "enums": {
+    "role": {
+      "name": "role",
+      "values": {
+        "user": "user",
+        "admin": "admin"
+      }
+    }
+  },
   "schemas": {},
   "_meta": {
     "columns": {},

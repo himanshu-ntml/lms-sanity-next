@@ -1,9 +1,9 @@
 import { relations } from 'drizzle-orm'
 import {
   boolean,
-  integer,
   pgTable,
-  primaryKey,
+  serial,
+  unique,
   uuid,
 } from 'drizzle-orm/pg-core'
 
@@ -13,15 +13,16 @@ import { profile } from './profile'
 export const profileToCourse = pgTable(
   'profile_course',
   {
+    id: serial('id').primaryKey(),
     profileId: uuid('profile_id')
       .notNull()
       .references(() => profile.id, { onDelete: 'cascade' }),
-    courseId: integer('course_id')
+    courseId: serial('course_id')
       .notNull()
       .references(() => course.id, { onDelete: 'cascade' }),
     isActive: boolean('is_active').default(false),
   },
-  (t) => ({ pk: primaryKey({ columns: [t.courseId, t.profileId] }) }),
+  (t) => ({ uk: unique().on(t.courseId, t.profileId) }),
 )
 
 export const profileToCourseRelations = relations(

@@ -1,3 +1,9 @@
+DO $$ BEGIN
+ CREATE TYPE "role" AS ENUM('user', 'admin');
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "course" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"title" text,
@@ -6,20 +12,20 @@ CREATE TABLE IF NOT EXISTS "course" (
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "profile" (
-	"id" uuid NOT NULL,
+	"id" uuid PRIMARY KEY NOT NULL,
 	"full_name" text,
 	"email" varchar(100),
-	"sarmaaya_id" integer,
-	CONSTRAINT "profile_id_unique" UNIQUE("id"),
+	"sarmaaya_id" varchar,
+	"role" "role" DEFAULT 'user',
 	CONSTRAINT "profile_email_unique" UNIQUE("email"),
 	CONSTRAINT "profile_sarmaaya_id_unique" UNIQUE("sarmaaya_id")
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "profile_course" (
+	"id" serial PRIMARY KEY NOT NULL,
 	"profile_id" uuid NOT NULL,
-	"course_id" integer NOT NULL,
-	"is_active" boolean DEFAULT false,
-	CONSTRAINT "profile_course_course_id_profile_id_pk" PRIMARY KEY("course_id","profile_id")
+	"course_id" serial NOT NULL,
+	"is_active" boolean DEFAULT false
 );
 --> statement-breakpoint
 DO $$ BEGIN

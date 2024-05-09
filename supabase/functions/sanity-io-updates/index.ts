@@ -5,16 +5,11 @@
 // Setup type definitions for built-in Supabase Runtime APIs
 /// <reference types="https://esm.sh/@supabase/functions-js/src/edge-runtime.d.ts" />
 
-console.log("Hello from Functions!")
-
 Deno.serve(async (req) => {
-  const { name } = await req.json()
-  const data = {
-    message: `Hello ${name}!`,
-  }
-
+  const reqJSON = await req.json()
+  console.log("JSON Body", reqJSON)
   return new Response(
-    JSON.stringify(data),
+    JSON.stringify(reqJSON),
     { headers: { "Content-Type": "application/json" } },
   )
 })
