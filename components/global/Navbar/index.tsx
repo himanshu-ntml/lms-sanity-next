@@ -1,17 +1,15 @@
-import dynamic from 'next/dynamic'
-import { draftMode } from 'next/headers'
-
-import { loadSettings } from '@/sanity/loader/loadQuery'
-
-import NavbarLayout from './NavbarLayout'
-const NavbarPreview = dynamic(() => import('./NavbarPreview'))
+import NavbarLayout, { NavbarProps } from './NavbarLayout'
 
 export async function Navbar() {
-  const initial = await loadSettings()
-
-  if (draftMode().isEnabled) {
-    return <NavbarPreview initial={initial} />
+  const navbarProps: NavbarProps = {
+    data: {
+      menuItems: [
+        { title: 'about us', path: 'about-us' },
+        { title: 'FAQs', path: 'faqs' },
+        { title: 'contact us', path: 'contact' },
+        { title: 'trainings', path: 'trainings' },
+      ],
+    },
   }
-
-  return <NavbarLayout data={initial.data} />
+  return <NavbarLayout data={navbarProps.data} />
 }
