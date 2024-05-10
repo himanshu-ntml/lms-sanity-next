@@ -3,6 +3,7 @@ import 'server-only'
 import * as queryStore from '@sanity/react-loader'
 import { draftMode } from 'next/headers'
 
+import { CoursesCardsQueryResult } from '@/sanity.types'
 import { client } from '@/sanity/lib/client'
 import {
   coursesCardsQuery,
@@ -79,7 +80,7 @@ export function loadHomePage() {
   )
 }
 export function loadCoursesCards() {
-  return loadQuery<HomePagePayload | null>(
+  return loadQuery<CoursesCardsQueryResult | null>(
     coursesCardsQuery,
     {},
     { next: { tags: ['courses-cards'] } },
