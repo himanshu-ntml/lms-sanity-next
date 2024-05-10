@@ -1,0 +1,27 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1715253643407,
+      "tag": "0000_eager_starbolt",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1715253785254,
+      "tag": "0001_panoramic_mentor",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1715259286818,
+      "tag": "0002_rare_justice",
+      "breakpoints": true
+    }
+  ]
+}

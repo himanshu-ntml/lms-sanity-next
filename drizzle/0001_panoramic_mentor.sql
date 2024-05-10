@@ -1,0 +1,1 @@
+ALTER TABLE "profile_course" ADD CONSTRAINT "profile_course_course_id_profile_id_unique" UNIQUE("course_id","profile_id");
