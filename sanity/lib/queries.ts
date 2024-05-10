@@ -16,6 +16,18 @@ export const homePageQuery = groq`
   }
 `
 
+export const coursesCardsQuery = groq`
+  *[_type == 'course'] {
+    _id,
+    "slug": slug.current,
+    title,
+    image,
+    isPaidCourse,
+    pricing,
+    summary
+  }
+`
+
 export const pagesBySlugQuery = groq`
   *[_type == "page" && slug.current == $slug][0] {
     _id,

@@ -5,6 +5,7 @@ import { draftMode } from 'next/headers'
 
 import { client } from '@/sanity/lib/client'
 import {
+  coursesCardsQuery,
   homePageQuery,
   pagesBySlugQuery,
   projectBySlugQuery,
@@ -75,6 +76,13 @@ export function loadHomePage() {
     homePageQuery,
     {},
     { next: { tags: ['home', 'project'] } },
+  )
+}
+export function loadCoursesCards() {
+  return loadQuery<HomePagePayload | null>(
+    coursesCardsQuery,
+    {},
+    { next: { tags: ['courses-cards'] } },
   )
 }
 

@@ -21,7 +21,7 @@ export default async function IndexRoute() {
       <div className="text-center">
         You don&rsquo;t have a homepage yet,{' '}
         <Link href={`${studioUrl}/desk/home`} className="underline">
-          create one now
+          create one now 1
         </Link>
         !
       </div>

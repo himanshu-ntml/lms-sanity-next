@@ -23,6 +23,11 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'summary',
+      title: 'Summary',
+      type: 'text',
+    }),
+    defineField({
       name: 'image',
       title: 'Cover Image',
       type: 'image',
